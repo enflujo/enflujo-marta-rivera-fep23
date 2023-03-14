@@ -1,13 +1,10 @@
 const { keyboard, Key } = require('@nut-tree/nut-js');
 const { SerialPort, ReadlineParser } = require('serialport');
-const { logVerde, hpQueEmocion, nilaFeliz, fiesta, logAviso } = require('./ayudas');
+const { logVerde, hpQueEmocion, nilaFeliz, fiesta, logAviso, buscarPuertoArduino } = require('./ayudas');
 const videos = ['A', 'B', 'C', 'D', 'E'];
 
 async function inicio() {
-  const puertos = await SerialPort.list();
-  const puertoArduino = puertos.find(({ manufacturer, friendlyName }) => {
-    return manufacturer.toLowerCase().includes('arduino') || friendlyName.toLowerCase().includes('arduino');
-  });
+  const puertoArduino = await buscarPuertoArduino();
 
   if (puertoArduino) {
     console.log(hpQueEmocion, logVerde('Hay ARDUINO!'));
