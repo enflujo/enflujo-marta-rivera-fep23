@@ -20,14 +20,14 @@ const buscarPuertoArduino = async () => {
 
   return puertos.find(({ manufacturer, vendorId, friendlyName }) => {
     let esArduino = false;
-
-    if (manufacturer && manufacturer.toLowerCase().includes('arduino')) {
+console.log(manufacturer, friendlyName, vendorId)
+    if (manufacturer && manufacturer.toLowerCase().includes('serial')) {
       esArduino = true;
-    } else if (friendlyName && friendlyName.toLowerCase().includes('arduino')) {
+    } else if (friendlyName && friendlyName.toLowerCase().includes('serial')) {
       esArduino = true;
     } else if (vendorId && idsArduinos.includes(vendorId)) {
       return true;
-    }
+    }   
     return esArduino;
   });
 };

@@ -1,4 +1,4 @@
-const int totalPines = 4;
+const int totalPines = 50;
 
 bool estados[totalPines] = {false};
 
